@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:bmii/modules/archived_tasks/archived_tasks_screen.dart';
+import 'package:bmii/modules/done_tasks/done_tasks_screen.dart';
+import 'package:bmii/modules/new_tasks/new_tasks_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -10,15 +13,23 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
+  int currentIndex = 0;
+
+  List<Widget> screens = [
+    NewTasksScreen(),
+    DoneTasksScreen(),
+    ArchivedTasksScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           // ignore: prefer_const_constructors
           title: Text(
-            'hi everone ',
+            'hi everone',
           ),
         ),
+        body: screens[currentIndex],
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           // ignore: prefer_const_constructors
@@ -26,34 +37,35 @@ class _HomeLayoutState extends State<HomeLayout> {
             Icons.add,
           ),
         ),
-    bottomNavigationBar: BottomNavigationBar(
-      // ignore: prefer_const_literals_to_create_immutables
-         type: BottomNavigationBarType.fixed,
-              currentIndex: 0,
-              onTap: (currentIndex) {
-                print(currentIndex);
-              },
-     items: [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.menu,
-                  ),
-                  label: 'Tasks',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.check_circle_outline,
-                  ),
-                  label: 'Done',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.archive_outlined,
-                  ),
-                  label: 'Archived',
-                ),
-              ],
-    )
-        );
+        bottomNavigationBar: BottomNavigationBar(
+          // ignore: prefer_const_literals_to_create_immutables
+          type: BottomNavigationBarType.fixed,
+          currentIndex: 0,
+          onTap: (currentIndex) {
+            setState({});
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.menu,
+              ),
+              label: 'Tasks',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.check_circle_outline,
+              ),
+              label: 'Done',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.archive_outlined,
+              ),
+              label: 'Archived',
+            ),
+          ],
+        ));
   }
 }
+
+class Satstate {}
