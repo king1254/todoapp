@@ -8,18 +8,19 @@ import 'package:flutter/material.dart';
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
 
+  
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  int currentIndex = 0;
-
   List<Widget> screens = [
     NewTasksScreen(),
     DoneTasksScreen(),
     ArchivedTasksScreen(),
   ];
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +41,12 @@ class _HomeLayoutState extends State<HomeLayout> {
         bottomNavigationBar: BottomNavigationBar(
           // ignore: prefer_const_literals_to_create_immutables
           type: BottomNavigationBarType.fixed,
-          currentIndex: 0,
-          onTap: (currentIndex) {
-            setState({});
+          currentIndex: currentIndex,
+          // ignore: non_constant_identifier_names
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
           },
           items: [
             BottomNavigationBarItem(
